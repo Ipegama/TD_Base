@@ -28,8 +28,15 @@ public class Tile : MonoBehaviour
     {
         if (tower != null) return;
 
-        GameObject towerToBuild = BuildManager.Instance.GetSelectedTower();
-        tower = Instantiate(towerToBuild,transform.position,Quaternion.identity);
+        Tower towerToBuild = BuildManager.Instance.GetSelectedTower();
+
+        if(towerToBuild.cost > LevelManager.Instance.currency)
+        {
+            return;
+        }
+
+        LevelManager.Instance.SpendCurrency(towerToBuild.cost);
+        tower = Instantiate(towerToBuild.prefab,transform.position,Quaternion.identity);
     }
 
 }

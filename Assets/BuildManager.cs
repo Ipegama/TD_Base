@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class BuildManager : Singleton<BuildManager>
 {
-    [SerializeField] private GameObject[] towersPrefabs;
+    [SerializeField] private Tower[] towers;
 
     private int selectedTower = 0;
 
-    public GameObject GetSelectedTower()
+    public Tower GetSelectedTower()
     {
-        return towersPrefabs[selectedTower];
+        return towers[selectedTower];
+    }
+
+    public void SetSelectedTower(int _selectedTower)
+    {
+        selectedTower = _selectedTower;
     }
 }
