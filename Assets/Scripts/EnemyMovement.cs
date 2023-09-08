@@ -9,8 +9,12 @@ public class EnemyMovement : MonoBehaviour
     private Transform target;
     private int pathIndex = 1;
 
+
+    private float baseSpeed;
+
     private void Start()
     {
+        baseSpeed = moveSpeed;
         target = LevelManager.Instance.path[pathIndex];
     }
 
@@ -37,5 +41,15 @@ public class EnemyMovement : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
 
         rb.velocity = direction * moveSpeed;
+    }
+
+    public void UpdateSpeed(float newSpeed)
+    {
+        moveSpeed = newSpeed;
+    }
+
+    public void ResetSpeed()
+    {
+        moveSpeed = baseSpeed;
     }
 }
