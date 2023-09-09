@@ -544,13 +544,14 @@ GameObject:
   - component: {fileID: 8184886351018062528}
   - component: {fileID: 7256491806682303718}
   - component: {fileID: 4715702154492426499}
+  - component: {fileID: 6493227504041049399}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Upgrade UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5224022655948180566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -634,6 +635,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6493227504041049399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470516738124602682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5590b8841ab0e45802d19dc689f60f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8627178064883983656
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,5 +732,7 @@ MonoBehaviour:
   targetingRange: 3
   bulletPrefab: {fileID: 8649414426258502583, guid: 2c1d088bd4cef0d40a7540958568a73d, type: 3}
   firingPoint: {fileID: 3264346196394564480}
+  upgradeUI: {fileID: 7470516738124602682}
+  upgradeButton: {fileID: 4470082398143773124}
   rotationSpeed: 200
   bps: 1

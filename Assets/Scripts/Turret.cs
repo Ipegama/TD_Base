@@ -18,7 +18,19 @@ public class Turret : MonoBehaviour
     private float timeUntilFire;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float bps = 1f;
+    [SerializeField] private int baseUpgradeCost = 100;
 
+    private float bpsBase;
+    private float targetingRangeBase;
+    private int level = 1;
+
+    private void Start()
+    {
+        bpsBase = bps;
+        targetingRangeBase = targetingRange;
+
+        upgradeButton.onClick.AddListener(Upgrade);
+    }
 
     private void Update()
     {
@@ -74,9 +86,49 @@ public class Turret : MonoBehaviour
         }
     }
 
+    public void OpenUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+    }
+
+    public void CloseUpgradeUI()
+    {
+        upgradeUI.SetActive(false);
+        UIManager.Instance.SetHoveringState(false);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position,transform.forward,targetingRange);
+    }
+
+    public void Upgrade()
+    {
+        if (baseUpgradeCost > LevelManager.Instance.currency) return;
+
+        LevelManager.Instance.SpendCurrency(CalculateCost());
+
+        level++;
+
+        bps = CalculateBPS();
+        targetingRange = CalculateRange();
+
+        CloseUpgradeUI();
+    }
+
+    private int CalculateCost()
+    {
+        return Mathf.RoundToInt(baseUpgradeCost * Mathf.Pow(level, .8f));
+    }
+
+    private float CalculateBPS()
+    {
+        return bpsBase * Mathf.Pow(level, .6f);
+    }
+
+    private float CalculateRange()
+    {
+        return targetingRangeBase * Mathf.Pow(level, .4f);
     }
 }
