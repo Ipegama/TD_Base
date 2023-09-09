@@ -2163,7 +2163,7 @@ MonoBehaviour:
   - {fileID: 2203518624968245363, guid: 0767079db477ee842966d643e7d65919, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
-  timeBetweenWaves: 5
+  timeBetweenWaves: 1
   difficultyScalingFactor: 0.75
   enemiesPerSecondCap: 15
 --- !u!4 &442593331
@@ -5793,6 +5793,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbef6418429180a4990bd2ee030a2f03, type: 3}
+--- !u!1001 &1265847604
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.006396413
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0394764
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516636779144882033, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9216397337455018482, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
+      propertyPath: m_Name
+      value: TackTurret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ef1919dc58f8de4e88d2fd9022f44e6, type: 3}
 --- !u!4 &1270603834 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5943378560300428026, guid: bbef6418429180a4990bd2ee030a2f03, type: 3}
@@ -10812,3 +10869,4 @@ SceneRoots:
   - {fileID: 40289399}
   - {fileID: 25632660}
   - {fileID: 2120080064}
+  - {fileID: 1265847604}

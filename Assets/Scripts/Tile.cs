@@ -31,14 +31,7 @@ public class Tile : MonoBehaviour
         {
             return;
         }
-
-        if (towerObj != null)
-        {
-            turret.OpenUpgradeUI();
-            return;
-        }
-
-            Tower towerToBuild = BuildManager.Instance.GetSelectedTower();
+        Tower towerToBuild = BuildManager.Instance.GetSelectedTower();
 
         if(towerToBuild.cost > LevelManager.Instance.currency)
         {
