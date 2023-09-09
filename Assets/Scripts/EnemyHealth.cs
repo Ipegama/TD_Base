@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int hitPoints = 2;
-    [SerializeField] private int currencyWorth = 50;
+    [SerializeField] private int hitPoints;
+    [SerializeField] private int currencyWorth;
     private bool isDestroyed = false;
 
     public void TakeDamage(int damage)

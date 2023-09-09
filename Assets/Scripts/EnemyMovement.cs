@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 2f;
+
     private Transform target;
+    private Rigidbody2D rb;
     private int pathIndex = 1;
-
-
     private float baseSpeed;
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     private void Start()
     {
         baseSpeed = moveSpeed;
@@ -24,7 +27,6 @@ public class EnemyMovement : MonoBehaviour
         {
             pathIndex++;
            
-
             if (pathIndex == LevelManager.Instance.path.Length)
             {
                 EnemySpawner.onEnemyDestroy.Invoke();
@@ -39,7 +41,6 @@ public class EnemyMovement : MonoBehaviour
     private void FixedUpdate()
     {
         Vector2 direction = (target.position - transform.position).normalized;
-
         rb.velocity = direction * moveSpeed;
     }
 

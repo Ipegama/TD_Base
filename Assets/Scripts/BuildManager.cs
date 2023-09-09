@@ -8,11 +8,7 @@ public class BuildManager : Singleton<BuildManager>
 
     private int selectedTower = 0;
 
-    public Tower GetSelectedTower()
-    {
-        return towers[selectedTower];
-    }
-
+    public Tower GetSelectedTower()=> towers[selectedTower];
     public void SetSelectedTower(int _selectedTower)
     {
         selectedTower = _selectedTower;
