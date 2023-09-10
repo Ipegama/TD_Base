@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6649078371119012975}
-  - component: {fileID: 5022010781640997760}
   - component: {fileID: 6907372982495290640}
   - component: {fileID: 3717983649400650534}
+  - component: {fileID: 5022010781640997760}
   - component: {fileID: 1795923873971733622}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: Normal Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,20 +36,6 @@ Transform:
   - {fileID: 5536995051888352568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5022010781640997760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2203518624968245363}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c25af89f4d85f49bff756979f65c2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 6907372982495290640}
-  moveSpeed: 2
 --- !u!50 &6907372982495290640
 Rigidbody2D:
   serializedVersion: 4
@@ -112,6 +98,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &5022010781640997760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2203518624968245363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c25af89f4d85f49bff756979f65c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
 --- !u!114 &1795923873971733622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6260cd1bc9e8a04aadd7dbbf1d82561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitPoints: 1
+  currencyWorth: 20
 --- !u!1 &7432408082016305226
 GameObject:
   m_ObjectHideFlags: 0

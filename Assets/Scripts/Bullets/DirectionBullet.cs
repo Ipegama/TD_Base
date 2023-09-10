@@ -6,6 +6,6 @@ public class DirectionBullet : Bullet
 {
     protected override void FixedUpdate()
     {
-        rb.velocity = direction * bulletSpeed;
+        rb.velocity = direction.normalized * bulletSpeed;
     }
 }
