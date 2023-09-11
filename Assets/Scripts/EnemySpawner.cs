@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] List<SpawningSO> spawningSO = new List<SpawningSO>();
+    [SerializeField] List<SpawnPack> spawnPacks = new List<SpawnPack>();
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
     private void Start()
@@ -15,18 +15,18 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator SpawnEnemiesCR()
     {
-        for (int i = 0; i < spawningSO.Count; i++)
+        for (int i = 0; i < spawnPacks.Count; i++)
         {
-            SpawningSO spawning = spawningSO[i];
-            int amountToSpawn = spawning.enemiesAmount;
+            SpawnPack spawnPack = spawnPacks[i];
+            int amountToSpawn = spawnPack.enemiesAmount;
 
             while (amountToSpawn > 0)
             {
-                Instantiate(spawning.EnemyPrefab, LevelManager.Instance.path[0].position, Quaternion.identity);
-                yield return Helpers.GetWait(spawning.timeBetweenSpawning);
+                Instantiate(spawnPack.EnemyPrefab, LevelManager.Instance.path[0].position, Quaternion.identity);
+                yield return Helpers.GetWait(spawnPack.timeBetweenSpawning);
                 amountToSpawn--;
             }
-            yield return Helpers.GetWait(spawning.timeToNextSpawningSO);
+            yield return Helpers.GetWait(spawnPack.timeToNextSpawningSO);
         }
 
         yield return null;

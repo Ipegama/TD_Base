@@ -27,16 +27,11 @@ public class Tile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (UIManager.Instance.IsHoveringOverUI())
-        {
-            return;
-        }
+        if (Helpers.IsOverUI()) return;
+
         Tower towerToBuild = BuildManager.Instance.GetSelectedTower();
 
-        if(towerToBuild.cost > LevelManager.Instance.currency)
-        {
-            return;
-        }
+        if(towerToBuild.cost > LevelManager.Instance.currency) return;
 
         LevelManager.Instance.SpendCurrency(towerToBuild.cost);
         towerObj = Instantiate(towerToBuild.prefab,transform.position,Quaternion.identity);

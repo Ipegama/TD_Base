@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void UpdateSpeed(float newSpeed)
     {
-        moveSpeed = newSpeed;
+        moveSpeed = 1f-newSpeed;
     }
 
     public void ResetSpeed()

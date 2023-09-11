@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 1
-  currencyWorth: 20
+  currencyWorth: 30
 --- !u!1 &7432408082016305226
 GameObject:
   m_ObjectHideFlags: 0
