@@ -3,11 +3,17 @@ using UnityEngine;
 
 public abstract class Turret : MonoBehaviour
 {
+    [Header("Turret Stats")]
     [SerializeField] protected LayerMask enemyMask;
     [SerializeField] protected float targetingRange;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float attacksPerSecond;
+
+    [Header("Bullet Stats")]
     [SerializeField] protected bool isHoming;
+    [SerializeField] protected int bulletDamage;
+    [SerializeField] protected float bulletSpeed;
+    [SerializeField] protected float bulletLifeTime;
 
     protected Transform target;
     protected float timeUntilFire;
@@ -39,9 +45,14 @@ public abstract class Turret : MonoBehaviour
     protected abstract void Shoot();
     protected abstract bool CheckTargetIsInRange();
     protected abstract void FindTarget();
+    protected void SetBulletStats(Bullet bullet)
+    {
+        bullet.SetStats(bulletSpeed, bulletDamage, BulletPool.Instance.bulletPool, isHoming, bulletLifeTime);
+    }
     private void OnDrawGizmosSelected()
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position,transform.forward,targetingRange);
     }
+
 }

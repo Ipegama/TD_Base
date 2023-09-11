@@ -17,22 +17,6 @@ public class Bullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void OnEnable()
-    {
-        StartCoroutine(BulletTimeLimit());
-    }
-    public void SetTarget(Transform transform)
-    { 
-        target = transform;
-    }
-    public void SetStats(float speed, int damage, ObjectPool<Bullet> pool, bool isHoming)
-    {
-        bulletSpeed = speed;
-        bulletDamage = damage;
-        _isHoming = isHoming;
-        _pool = pool;
-        gameObject.SetActive(true);
-    }
     protected void FixedUpdate()
     {
         if (_isHoming)
@@ -41,8 +25,21 @@ public class Bullet : MonoBehaviour
 
             direction = (target.position - transform.position).normalized;
         }
-        
-        rb.velocity = direction * bulletSpeed;    
+
+        rb.velocity = direction * bulletSpeed;
+    }
+    public void SetTarget(Transform transform)
+    { 
+        target = transform;
+    }
+    public void SetStats(float speed, int damage, ObjectPool<Bullet> pool, bool isHoming, float timeLimit)
+    {
+        bulletSpeed = speed;
+        bulletDamage = damage;
+        _isHoming = isHoming;
+        _pool = pool;
+        gameObject.SetActive(true);
+        StartCoroutine(BulletTimeLimit(timeLimit));
     }
     public void SetDirection(Vector2 dir)
     {
@@ -53,11 +50,9 @@ public class Bullet : MonoBehaviour
         collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);
         _pool.Release(this);
     }
-
-
-    private IEnumerator BulletTimeLimit()
+    private IEnumerator BulletTimeLimit(float timeLimit)
     {
-        yield return Helpers.GetWait(1f);
+        yield return Helpers.GetWait(timeLimit);
         _pool.Release(this);
     }
 }

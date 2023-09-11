@@ -136,3 +136,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8649414426258502583, guid: 2c1d088bd4cef0d40a7540958568a73d, type: 3}
   attacksPerSecond: 1
   isHoming: 1
+  bulletDamage: 1
+  bulletSpeed: 5
+  bulletLifeTime: 1

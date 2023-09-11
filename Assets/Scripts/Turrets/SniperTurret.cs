@@ -12,7 +12,7 @@ public class SniperTurret : Turret
     {
         Bullet bullet = BulletPool.Instance.bulletPool.Get();
         bullet.transform.position = this.transform.position;
-        bullet.SetStats(5f, 1, BulletPool.Instance.bulletPool, isHoming);
+        SetBulletStats(bullet);
         bullet.SetTarget(target);
     }
     protected override bool CheckTargetIsInRange()
@@ -27,5 +27,12 @@ public class SniperTurret : Turret
         {
             target = hits[0].transform;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Handles.color = Color.cyan;
+        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        Handles.DrawWireDisc(transform.position, transform.forward, targetingRangeMin);
     }
 }

@@ -10,7 +10,7 @@ public class AttackTurret : Turret
     {
         Bullet bullet = BulletPool.Instance.bulletPool.Get();
         bullet.transform.position = this.transform.position;
-        bullet.SetStats(5f,1,BulletPool.Instance.bulletPool, isHoming);
+        SetBulletStats(bullet);
         bullet.SetTarget(target);
     }
     protected override bool CheckTargetIsInRange()
