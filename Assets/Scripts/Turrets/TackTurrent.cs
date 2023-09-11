@@ -22,9 +22,10 @@ public class TackTurrent : Turret
         {
             for (int j = -1; j <2; j++)
             {
-                GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-                Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-                bulletScript.SetDirection(new Vector2(i, j));
+                Bullet bullet = BulletPool.Instance.bulletPool.Get();
+                bullet.transform.position = this.transform.position;
+                bullet.SetStats(5f, 1, BulletPool.Instance.bulletPool, isHoming);
+                bullet.SetDirection(new Vector2(i, j));
             }
         }
     }

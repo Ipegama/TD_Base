@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BuildManager : Singleton<BuildManager>
+public class BuildSystem : Singleton<BuildSystem>
 {
     [SerializeField] private Tower[] towers;
 

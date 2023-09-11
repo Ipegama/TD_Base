@@ -133,5 +133,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   targetingRange: 3
-  bulletPrefab: {fileID: 8649414426258502583, guid: a39afa9ae2d0d5041a7568a5e7771187, type: 3}
+  bulletPrefab: {fileID: 8649414426258502583, guid: 2c1d088bd4cef0d40a7540958568a73d, type: 3}
   attacksPerSecond: 1
+  isHoming: 0

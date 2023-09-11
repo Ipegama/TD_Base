@@ -10,9 +10,10 @@ public class SniperTurret : Turret
 
     protected override void Shoot()
     {
-        GameObject bulletObj = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        Bullet bulletScript = bulletObj.GetComponent<Bullet>();
-        bulletScript.SetTarget(target);
+        Bullet bullet = BulletPool.Instance.bulletPool.Get();
+        bullet.transform.position = this.transform.position;
+        bullet.SetStats(5f, 1, BulletPool.Instance.bulletPool, isHoming);
+        bullet.SetTarget(target);
     }
     protected override bool CheckTargetIsInRange()
     {

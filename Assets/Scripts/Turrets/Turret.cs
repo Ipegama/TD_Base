@@ -7,7 +7,8 @@ public abstract class Turret : MonoBehaviour
     [SerializeField] protected float targetingRange;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected float attacksPerSecond;
-    
+    [SerializeField] protected bool isHoming;
+
     protected Transform target;
     protected float timeUntilFire;
 

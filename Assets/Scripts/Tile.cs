@@ -29,7 +29,7 @@ public class Tile : MonoBehaviour
     {
         if (Helpers.IsOverUI()) return;
 
-        Tower towerToBuild = BuildManager.Instance.GetSelectedTower();
+        Tower towerToBuild = BuildSystem.Instance.GetSelectedTower();
 
         if(towerToBuild.cost > LevelManager.Instance.currency) return;
 

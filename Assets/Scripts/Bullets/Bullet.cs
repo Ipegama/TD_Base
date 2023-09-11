@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public abstract class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    [SerializeField] protected float bulletSpeed, lifeTime;
+    [SerializeField] protected float bulletSpeed;
     [SerializeField] protected int bulletDamage;
+    [SerializeField] bool _isHoming;
+    private ObjectPool<Bullet> _pool;
     protected Transform target;
     protected Rigidbody2D rb;
     protected Vector2 direction;
@@ -13,18 +16,34 @@ public abstract class Bullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, lifeTime);
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(BulletTimeLimit());
     }
     public void SetTarget(Transform transform)
     { 
         target = transform;
     }
-    public void SetStats(float speed, int damage)
+    public void SetStats(float speed, int damage, ObjectPool<Bullet> pool, bool isHoming)
     {
         bulletSpeed = speed;
         bulletDamage = damage;
+        _isHoming = isHoming;
+        _pool = pool;
+        gameObject.SetActive(true);
     }
-    protected abstract void FixedUpdate();
+    protected void FixedUpdate()
+    {
+        if (_isHoming)
+        {
+            if (!target) return;
+
+            direction = (target.position - transform.position).normalized;
+        }
+        
+        rb.velocity = direction * bulletSpeed;    
+    }
     public void SetDirection(Vector2 dir)
     {
         direction = dir;
@@ -32,6 +51,13 @@ public abstract class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(bulletDamage);
-        Destroy(gameObject);
+        _pool.Release(this);
+    }
+
+
+    private IEnumerator BulletTimeLimit()
+    {
+        yield return Helpers.GetWait(1f);
+        _pool.Release(this);
     }
 }
